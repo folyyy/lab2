@@ -29,14 +29,19 @@ public class PageFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment, null);
-        SecondActivity obj = new SecondActivity();
+        final View view = inflater.inflate(R.layout.fragment, null);
+        final SecondActivity obj = new SecondActivity();
         ImageView img = view.findViewById(R.id.img);
         obj.setImg(pageNumber,img);
         String helptext = obj.getHelpText(pageNumber);
         TextView desc = view.findViewById(R.id.desc);
         desc.setText(helptext);
-
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                obj.removePager(v);
+            }
+        });
         return view;
     }
 
