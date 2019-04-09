@@ -39,7 +39,7 @@ public class PageFragment extends Fragment {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                obj.removePager(v);
+                obj.removePager();
             }
         });
         return view;

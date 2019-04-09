@@ -30,7 +30,6 @@ public class SecondActivity extends AppCompatActivity {
     public static ArrayList name;
     public static ArrayList graphic;
     public static ArrayList helptext;
-    public static int number;
     public static ViewPager pager;
 
     SecondActivity() {}
@@ -49,18 +48,17 @@ public class SecondActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                number = position;
                 pager = findViewById(R.id.pager);
                 PagerAdapter pagerAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager());
                 pager.setAdapter(pagerAdapter);
-                pager.setCurrentItem(number);
+                pager.setCurrentItem(position);
 
             }
         });
     }
 
-    public void removePager(View view) {
-        pager.removeView(view);
+    public void removePager() {
+        pager.removeAllViews();
         pager.setAdapter(null);
     }
 
@@ -72,7 +70,6 @@ public class SecondActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            Log.d("POSITIOn", "POSITION = " + position + " NUMBER = " + number);
             return PageFragment.newInstance(position);
 
         }
